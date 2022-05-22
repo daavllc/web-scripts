@@ -66,14 +66,7 @@ function Initialize()
     ScaleKeys = [ScaleKey];
     for (let i = 1; i < 15; i++)
     {
-        if (ScalePattern[(i - 1) % 7] == "f")
-        {
-            ScaleKeys.push(ScaleKeys[i-1] + 2)
-        }
-        else
-        {
-            ScaleKeys.push(ScaleKeys[i-1] + 1)
-        }
+        ScaleKeys.push(ScaleKeys[i-1] + parseInt(ScalePattern[(i - 1) % 7]))
     }
 }
 
@@ -84,47 +77,76 @@ function Draw()
         alert("Required variables are not defined!\nPlease define them and try again.");
         return;
     }
+    else if (ScalePattern.length != 7)
+    {
+        alert("Scale pattern must be 7 characters.\nPlease correct this and try again.")
+        return;
+    }
+    else if (ScaleKey < 0 || ScaleKey > 11)
+    {
+        alert("The root key must be between 0 and 11.\nPlease correct this and try again.")
+        return;
+    }
+    else
+    {
+        let total = 0
+        for (let value of ScalePattern)
+        {
+            total += parseInt(value, 10)
+        }
+        if (total != 12)
+        {
+            alert("Invalid ScalePattern, total must be 12.\nPlease correct this and try again.");
+            return;
+        }
+    }
     Initialize.call(this);
     // Scale
     var canvas = document.getElementById("scale");
     InitializeCanvas.call(this, canvas);
-    ctx = canvas.getContext("2d")
+    ctx = canvas.getContext("2d");
     DrawKeyboard.call(this, ctx);
     DrawScaleLabels.call(this, ctx)
     // Chord 1
     var canvas = document.getElementById("chord1");
     InitializeCanvas.call(this, canvas);
-    ctx = canvas.getContext("2d")
+    ctx = canvas.getContext("2d");
     DrawKeyboard.call(this, ctx);
-    DrawChordLabels.call(this, ctx, [1,3,5,7])
+    DrawChordLabels.call(this, ctx, [0,2,4,6])
     // Chord 2
     var canvas = document.getElementById("chord2");
     InitializeCanvas.call(this, canvas);
-    ctx = canvas.getContext("2d")
+    ctx = canvas.getContext("2d");
     DrawKeyboard.call(this, ctx);
-    DrawChordLabels.call(this, ctx, [2,4,6,8])
+    DrawChordLabels.call(this, ctx, [1,3,5,7])
     // Chord 3
     var canvas = document.getElementById("chord3");
     InitializeCanvas.call(this, canvas);
-    ctx = canvas.getContext("2d")
+    ctx = canvas.getContext("2d");
     DrawKeyboard.call(this, ctx);
-    DrawChordLabels.call(this, ctx, [3,5,7,9])
+    DrawChordLabels.call(this, ctx, [2,4,6,8])
     // Chord 4
     var canvas = document.getElementById("chord4");
     InitializeCanvas.call(this, canvas);
-    ctx = canvas.getContext("2d")
+    ctx = canvas.getContext("2d");
     DrawKeyboard.call(this, ctx);
-    DrawChordLabels.call(this, ctx, [4,6,8,10])
+    DrawChordLabels.call(this, ctx, [3,5,7,9])
     // Chord 5
     var canvas = document.getElementById("chord5");
     InitializeCanvas.call(this, canvas);
-    ctx = canvas.getContext("2d")
+    ctx = canvas.getContext("2d");
     DrawKeyboard.call(this, ctx);
-    DrawChordLabels.call(this, ctx, [5,7,9,11])
+    DrawChordLabels.call(this, ctx, [4,6,8,10])
     // Chord 6
     var canvas = document.getElementById("chord6");
     InitializeCanvas.call(this, canvas);
-    ctx = canvas.getContext("2d")
+    ctx = canvas.getContext("2d");
+    DrawKeyboard.call(this, ctx);
+    DrawChordLabels.call(this, ctx, [5,7,9,11])
+    // Chord 7
+    var canvas = document.getElementById("chord7");
+    InitializeCanvas.call(this, canvas);
+    ctx = canvas.getContext("2d");
     DrawKeyboard.call(this, ctx);
     DrawChordLabels.call(this, ctx, [6,8,10,12])
 }
