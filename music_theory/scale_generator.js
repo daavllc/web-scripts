@@ -63,7 +63,7 @@ function Initialize()
         }
     }
 
-    ScaleKeys = [ScaleKey];
+    ScaleKeys = [ScaleRoot];
     for (let i = 1; i < 15; i++)
     {
         ScaleKeys.push(ScaleKeys[i-1] + parseInt(ScalePattern[(i - 1) % 7]))
@@ -82,7 +82,7 @@ function Draw()
         alert("Scale pattern must be 7 characters.\nPlease correct this and try again.")
         return;
     }
-    else if (ScaleKey < 0 || ScaleKey > 11)
+    else if (ScaleRoot < 0 || ScaleRoot > 11)
     {
         alert("The root key must be between 0 and 11.\nPlease correct this and try again.")
         return;
