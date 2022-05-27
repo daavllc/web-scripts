@@ -638,7 +638,7 @@ class Guitar
 
         Manager.CreateCombo("string_count", [[4,4], [5,5], [6,6], [7,7], [8,8], [9,9], [10,10], [11,11], [12,12]], this.StringCount - 4, "Strings").oninput = function()
         {
-            Manager.SelectRow(0)
+            Manager.SelectRow(1)
             Manager.Instrument.StringCount = parseInt(this.value, 10);
             while (Manager.Instrument.StringCount > Manager.Instrument.TuningLabels.length)
             {
