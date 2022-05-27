@@ -349,8 +349,8 @@ class _Manager
 <div class="select_container" style="display: flex; align-items: center;">
   <h3 id="select_heading">Instrument:</h3>
   <select id="select_instrument" class="combo">
-    <option value="piano">Piano</option>
-    <option value="guitar" selected>Guitar</option>
+    <option value="piano" selected>Piano</option>
+    <option value="guitar">Guitar</option>
   </select>
   <button onclick="Manager.ToggleSettings();">Settings</button>
 </div>`
